@@ -1,0 +1,29 @@
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+<h1>
+<a href = "/" > Buscando Huellas </a>
+</h1>
+</div >
+{% for post in reports %} 
+<div >
+{% for i in images %}
+
+{% if i.report_id.id == post.id %}
+<img src='{{ MEDIA_URL }}{{ i.image }}' height="100px"/>
+
+{% endif %}
+
+{% endfor %}
+<p > id: {{ post.id }} -> {{ post.type }} </p >
+<p > {{ post.name }}, {{ post.breed}} </p >
+<p >{{ post.city }}, {{ post.zone}}, {{ post.n_hood }} </p >
+</div>
+{% endfor %}
+</body>
+<html>
