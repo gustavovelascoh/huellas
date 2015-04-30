@@ -1,9 +1,9 @@
 .project
 .pydevproject
 
-staticfiles/*
+staticfiles/
 
-media/*
+media/
 
 *.pyc
 
