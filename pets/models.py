@@ -4,7 +4,7 @@ from django.db import models
 
 class Report(models.Model):
     
-    name = models.CharField(max_length=32,blank=True);
+    name = models.CharField(max_length=32,blank=True,default='NA');
     
     animal = models.CharField(max_length=32);
     
@@ -47,6 +47,19 @@ class Report(models.Model):
     reporter_name = models.CharField(max_length=32, default="Anonymous");
     email = models.EmailField(default="",blank=True);
     phone = models.CharField(max_length=32,default="",blank=True);
+
+    pub_date =  models.DateTimeField(auto_now_add=True)
+    mod_date =  models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+
+        name = self.name + ' - '
+
+        if self.name == 'NA':
+            name = ''
+
+        name += self.breed + ' - ' + self.city
+        return name
     
 class ReportImage(models.Model):
     

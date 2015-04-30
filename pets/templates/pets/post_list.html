@@ -16,6 +16,9 @@
 <h3>Perdidos</h3>
 {% for post in lost %} 
 <div style="border-radius:25px; border: 2px solid #BBBBEE; padding: 20px;">
+
+<h5>{{ post }}</h5>
+
 {% for i in images %}
 
 {% if i.report_id.id == post.id %}
@@ -35,6 +38,9 @@
 <h3>Encontrados</h3>
 {% for post in found %} 
 <div style="border-radius:25px; border: 2px solid #BBEEBB; padding: 20px;">
+
+<h5>{{ post }}</h5>
+
 {% for i in images %}
 
 {% if i.report_id.id == post.id %}

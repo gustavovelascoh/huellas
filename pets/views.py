@@ -6,7 +6,7 @@ from .models import ReportImage
 
 def post_list(request):
 
-    reports = Report.objects.all()
+    reports = Report.objects.all().order_by('pub_date').reverse()
     lost = reports.filter(type=0)
     found = reports.filter(type=1)
     images = ReportImage.objects.all()
