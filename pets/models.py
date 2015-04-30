@@ -4,15 +4,23 @@ from django.db import models
 
 class Report(models.Model):
     
-    name = models.CharField(max_length=32);
+    name = models.CharField(max_length=32,blank=True);
     
     animal = models.CharField(max_length=32);
     
-    breed = models.CharField(max_length=32);
+    breed = models.CharField(max_length=32,default="Criollo");
     
-    color = models.CharField(max_length=128);
+    color = models.CharField(max_length=128,blank=True);
     
     city = models.CharField(max_length=32);
+    
+    GENRE_CHOICES = (
+        ('None','Desconocido'),
+        ('M', 'Macho'),
+        ('F', 'Hembra'),
+        )
+    
+    genre = models.CharField(max_length=16, choices=GENRE_CHOICES, default=GENRE_CHOICES[0]);
         
     ZONE_CHOICES = (
         ('None','Sin zona'),
@@ -24,7 +32,7 @@ class Report(models.Model):
                     )
     zone = models.CharField(max_length=32, choices=ZONE_CHOICES);
     
-    n_hood = models.CharField(max_length=32);
+    n_hood = models.CharField(max_length=32,default="NA");
     
     comment = models.TextField();
     
@@ -36,8 +44,9 @@ class Report(models.Model):
     
     type = models.CharField(max_length=16, choices=TYPE_CHOICES)
     
-    email = models.EmailField(default="");
-    phone = models.CharField(max_length=32,default="");
+    reporter_name = models.CharField(max_length=32, default="Anonymous");
+    email = models.EmailField(default="",blank=True);
+    phone = models.CharField(max_length=32,default="",blank=True);
     
 class ReportImage(models.Model):
     

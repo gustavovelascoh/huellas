@@ -10,20 +10,43 @@
 <a href = "/" > Buscando Huellas </a>
 </h1>
 </div >
-{% for post in reports %} 
-<div >
+
+
+<div style="width: 40%; float:left">
+<h3>Perdidos</h3>
+{% for post in lost %} 
+<div style="border-radius:25px; border: 2px solid #BBBBEE; padding: 20px;">
 {% for i in images %}
 
 {% if i.report_id.id == post.id %}
-<img src='{{ MEDIA_URL }}{{ i.image }}' height="100px"/>
+<img src='{{ MEDIA_URL }}{{ i.image }}' width="50%"/>
 
 {% endif %}
 
 {% endfor %}
-<p > id: {{ post.id }} -> {{ post.type }} </p >
-<p > {{ post.name }}, {{ post.breed}} </p >
-<p >{{ post.city }}, {{ post.zone}}, {{ post.n_hood }} </p >
+<p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.genre }} </p >
+<p > Ciudad: {{ post.city }}, Zona: {{ post.zone}}, Barrio: {{ post.n_hood }} </p >
 </div>
 {% endfor %}
+</div>
+
+
+<div style="width: 40%; float:left">
+<h3>Encontrados</h3>
+{% for post in found %} 
+<div style="border-radius:25px; border: 2px solid #BBEEBB; padding: 20px;">
+{% for i in images %}
+
+{% if i.report_id.id == post.id %}
+<img src='{{ MEDIA_URL }}{{ i.image }}' height="150px"/>
+
+{% endif %}
+
+{% endfor %}
+<p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.genre }} </p >
+<p > Ciudad: {{ post.city }}, Zona: {{ post.zone}}, Barrio: {{ post.n_hood }} </p >
+</div>
+{% endfor %}
+</div>
 </body>
 <html>

@@ -7,6 +7,11 @@ from .models import ReportImage
 def post_list(request):
 
     reports = Report.objects.all()
+    lost = reports.filter(type=0)
+    found = reports.filter(type=1)
     images = ReportImage.objects.all()
     
-    return render(request, 'pets/post_list.html', {'reports': reports, 'images': images})
+    return render(request, 'pets/post_list.html', {'reports': reports,
+                                                   'images': images,
+                                                   'lost': lost,
+                                                   'found': found})

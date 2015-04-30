@@ -13,9 +13,9 @@ class ReportAdmin(admin.ModelAdmin):
     
     fieldsets = [
         (None, {'fields' : ['type']}),
-        ('Pet info', {'fields' : ['animal', 'name', 'breed', 'color']}),
+        ('Pet info', {'fields' : ['animal', 'name', 'genre', 'breed', 'color']}),
         ('Location info', {'fields' : ['city', 'zone', 'n_hood']}),
-        (None, {'fields' : ['comment'] }),
+        ('Report', {'fields' : ['reporter_name', 'email', 'phone', 'comment'] }),
                  ]
     inlines = [ReportImageInline]
     
