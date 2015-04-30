@@ -20,7 +20,7 @@ class Report(models.Model):
         ('F', 'Hembra'),
         )
     
-    genre = models.CharField(max_length=16, choices=GENRE_CHOICES, default=GENRE_CHOICES[0]);
+    genre = models.CharField(max_length=16, choices=GENRE_CHOICES, default='None');
         
     ZONE_CHOICES = (
         ('None','Sin zona'),
