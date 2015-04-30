@@ -42,7 +42,7 @@ class Report(models.Model):
         ('2','Visto'),
                     )
     
-    type = models.CharField(max_length=16, choices=TYPE_CHOICES)
+    type = models.CharField(max_length=32, choices=TYPE_CHOICES)
     
     reporter_name = models.CharField(max_length=32, default="Anonymous");
     email = models.EmailField(default="",blank=True);

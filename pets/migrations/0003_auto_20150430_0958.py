@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='report',
             name='genre',
-            field=models.CharField(max_length=16, choices=[('None', 'Desconocido'), ('M', 'Macho'), ('F', 'Hembra')], default=('None', 'Desconocido')),
+            field=models.CharField(max_length=16, choices=[('None', 'Desconocido'), ('M', 'Macho'), ('F', 'Hembra')], default='Desconocido'),
         ),
         migrations.AddField(
             model_name='report',
