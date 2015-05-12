@@ -21,8 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'j5ckc+v=@(l5$!y@$9stjb@p78)$*9416dn562dj@0ih(wumdc'
 
+ON_HEROKU = os.environ.get('ON_HEROKU')
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+if ON_HEROKU:
+    DEBUG=False
+else:
+    DEBUG = True
+    DATABASE_URL = 'postgres:///gustavo'
 
 ALLOWED_HOSTS = []
 
@@ -38,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pets',
+    'storages'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,6 +94,9 @@ DATABASES = {
 }
 
 DATABASES['default'] =  dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2';
+DATABASES['default']['NAME'] = 'gustavo';
+print(DATABASES)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -125,3 +136,24 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
+
+# AWS Settings
+
+AWS_STORAGE_BUCKET_NAME = 'huellas'
+AWS_ACCESS_KEY_ID = 'AKIAJTHR43V7F7FMPY6Q'
+AWS_SECRET_ACCESS_KEY = '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'
+
+# Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+# it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+# This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+# We also use it in the next setting.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+# refers directly to STATIC_URL. So it's safest to always set it.
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+# Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
+# you run `collectstatic`).
+MEDIAFILES_STORAGE = 'custom_storages.MediaStorage'
