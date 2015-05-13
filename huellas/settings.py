@@ -26,12 +26,12 @@ ON_HEROKU = os.environ.get('ON_HEROKU')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if ON_HEROKU:
-    DEBUG=True
+    DEBUG=False
 else:
     DEBUG = True
     DATABASE_URL = 'postgres:///gustavo'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'huellas.herokuapp.com']
 
 
 # Application definition
