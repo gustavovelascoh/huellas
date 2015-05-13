@@ -95,10 +95,10 @@ DATABASES = {
 
 
 DATABASES['default'] =  dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2';
+
 
 if not ON_HEROKU:
-
+    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2';
     DATABASES['default']['NAME'] = 'gustavo';
     print(DATABASES)
 
