@@ -26,7 +26,7 @@ ON_HEROKU = os.environ.get('ON_HEROKU')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if ON_HEROKU:
-    DEBUG=False
+    DEBUG=True
 else:
     DEBUG = True
     DATABASE_URL = 'postgres:///gustavo'
