@@ -154,6 +154,8 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
+
+#from . import custom_storages
 # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
 # you run `collectstatic`).
-MEDIAFILES_STORAGE = 'custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'huellas.custom_storages.MediaStorage'

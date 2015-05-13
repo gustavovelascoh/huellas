@@ -22,7 +22,7 @@
 {% for i in images %}
 
 {% if i.report_id.id == post.id %}
-<img src='{{ MEDIA_URL }}{{ i.image }}' width="50%"/>
+<img src='{{ i.image.url }}' width="50%"/>
 
 {% endif %}
 
