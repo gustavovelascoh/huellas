@@ -31,7 +31,7 @@ else:
     DEBUG = True
     DATABASE_URL = 'postgres:///gustavo'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'huellas.herokuapp.com']
 
 
 # Application definition
@@ -93,10 +93,14 @@ DATABASES = {
     }
 }
 
+
 DATABASES['default'] =  dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2';
-DATABASES['default']['NAME'] = 'gustavo';
-print(DATABASES)
+
+
+if not ON_HEROKU:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2';
+    DATABASES['default']['NAME'] = 'gustavo';
+    print(DATABASES)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
