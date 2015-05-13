@@ -17,7 +17,7 @@
 {% for post in lost %} 
 <div style="border-radius:25px; border: 2px solid #BBBBEE; padding: 20px;">
 
-<h5>{{ post }}</h5>
+<h5><a href="/report/{{ post.id }}">{{ post }}</a></h5>
 
 {% for i in images %}
 
@@ -39,7 +39,7 @@
 {% for post in found %} 
 <div style="border-radius:25px; border: 2px solid #BBEEBB; padding: 20px;">
 
-<h5>{{ post }}</h5>
+<h5><a href="/report/{{ post.id }}">{{ post }}</a></h5>
 
 {% for i in images %}
 
