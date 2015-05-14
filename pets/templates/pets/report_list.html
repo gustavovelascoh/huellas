@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div><a href="/list">Limpiar filtro</a></div>
+<div>
     <form action="" method="get">
         {{ filter.form.as_p }}
         <input type="submit" />
     </form>
+    </div>
 <div class="list">
     {% for object in filter %}
 <div class="card" style="width: 100%; float:left">

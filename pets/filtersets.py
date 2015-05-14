@@ -15,7 +15,7 @@ class ReportFilter(django_filters.FilterSet):
     breed.label = 'Raza'
     
     city = django_filters.CharFilter(lookup_type='icontains')
-    breed.label = 'Ciudad'
+    city.label = 'Ciudad'
     
     zone = django_filters.ChoiceFilter(choices=Report.ZONE_CHOICES)
     #zone.label='Zona'
