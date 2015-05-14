@@ -15,7 +15,7 @@ class Report(models.Model):
     city = models.CharField(max_length=32);
     
     GENRE_CHOICES = (
-        ('None','Desconocido'),
+        (None,'Desconocido'),
         ('M', 'Macho'),
         ('F', 'Hembra'),
         )
@@ -23,7 +23,7 @@ class Report(models.Model):
     genre = models.CharField(max_length=32, choices=GENRE_CHOICES, default='None');
         
     ZONE_CHOICES = (
-        ('None','Sin zona'),
+        (None,'Sin zona'),
         ('N', 'Norte'),
         ('S', 'Sur'),
         ('C', 'Centro'),
