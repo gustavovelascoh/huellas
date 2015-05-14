@@ -12,3 +12,4 @@ whitenoise
 pillow
 django-storages-redux
 boto
+django-filter

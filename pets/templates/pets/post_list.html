@@ -11,13 +11,13 @@
 </h1-->
 </div >
 
-
+<div>Busqueda con filtro <a href="/list">aquí</a></div>
 <div style="width: 40%; float:left">
 <h3>Perdidos</h3>
 {% for post in lost %} 
 <div style="border-radius:25px; border: 2px solid #BBBBEE; padding: 20px;">
 
-<h5>{{ post }}</h5>
+<h5><a href="/report/{{ post.id }}">{{ post }}</a></h5>
 
 {% for i in images %}
 
@@ -27,7 +27,7 @@
 {% endif %}
 
 {% endfor %}
-<p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.genre }} </p >
+<p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.get_genre_display }} </p >
 <p > Ciudad: {{ post.city }}, Zona: {{ post.zone}}, Barrio: {{ post.n_hood }} </p >
 </div>
 {% endfor %}
@@ -39,7 +39,7 @@
 {% for post in found %} 
 <div style="border-radius:25px; border: 2px solid #BBEEBB; padding: 20px;">
 
-<h5>{{ post }}</h5>
+<h5><a href="/report/{{ post.id }}">{{ post }}</a></h5>
 
 {% for i in images %}
 
@@ -50,7 +50,7 @@
 
 {% endfor %}
 <p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.genre }} </p >
-<p > Ciudad: {{ post.city }}, Zona: {{ post.zone}}, Barrio: {{ post.n_hood }} </p >
+<p > Ciudad: {{ post.city }}, Zona: {{ post.get_zone_display}}, Barrio: {{ post.n_hood }} </p >
 </div>
 {% endfor %}
 </div>
