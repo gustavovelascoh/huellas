@@ -8,16 +8,16 @@
 </div>
 <div>
 	<div> <b>Ciudad:</b> {{ object.city }}</div>
-	<div> <b>Zona:</b> {{ object.zone }}</div>
+	<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
 	<div> <b>Barrio:</b> {{ object.n_hood }}</div>
 </div>
 <div>
 	<div> <b>Nombre:</b> {{ object.name }}</div>
 	<div> <b>Raza:</b> {{ object.breed }}</div>
-	<div> <b>Genero:</b> {{ object.genre }}</div>
+	<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
 </div>
 <div>
-<div><b>Reporter: </b>{{ object.reporter }}</div>
+<div><b>Reportado por: </b>{{ object.reporter }}</div>
 <div><b>Comentarios: </b>{{ object.comment }}<div>
 <div><b>Publicado: </b>{{ object.pub_date|date }}</div>
 </div>

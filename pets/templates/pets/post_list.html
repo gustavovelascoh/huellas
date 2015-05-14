@@ -27,7 +27,7 @@
 {% endif %}
 
 {% endfor %}
-<p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.genre }} </p >
+<p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.get_genre_display }} </p >
 <p > Ciudad: {{ post.city }}, Zona: {{ post.zone}}, Barrio: {{ post.n_hood }} </p >
 </div>
 {% endfor %}
@@ -50,7 +50,7 @@
 
 {% endfor %}
 <p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.genre }} </p >
-<p > Ciudad: {{ post.city }}, Zona: {{ post.zone}}, Barrio: {{ post.n_hood }} </p >
+<p > Ciudad: {{ post.city }}, Zona: {{ post.get_zone_display}}, Barrio: {{ post.n_hood }} </p >
 </div>
 {% endfor %}
 </div>
