@@ -1,6 +1,11 @@
 <a href="/"> Volver <- <a>
 <h1>{{ object }}</h1>
+<p>images: 
+{% for img in object.reportimage_set.all %}
+<img src="{{ img.image.url }}" alt="image"> </img>
+{% endfor %}
+</p>
 <p>{{ object.city }}</p>
-<p>Reporter: {{ object.reporter }}</p>
-<p>Comentarios: {{ object.comment }}<p>
-<p>Publicado: {{ object.pub_date|date }}</p>
+<p><b>Reporter: </b>{{ object.reporter }}</p>
+<p><b>Comentarios: </b>{{ object.comment }}<p>
+<p><b>Publicado: </b>{{ object.pub_date|date }}</p>
