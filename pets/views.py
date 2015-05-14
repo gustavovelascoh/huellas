@@ -8,6 +8,10 @@ from django.utils import timezone
 
 from django.views.generic.detail import DetailView
 
+from .filtersets import ReportFilter
+
+from django.shortcuts import render_to_response
+
 # Create your views here.
 
 def post_list(request):
@@ -31,13 +35,7 @@ class ReportDetailView(DetailView):
         context['now'] = timezone.now()
         return context
 
-def post_detail(request):
+def report_list(request):
 
-    if request.method == 'GET':
-        req = request.GET
-        report = Report.objects.all().filter(id=1)
-        
-    
-    return render(request, 'pets/post_detail.html', {'report': report,
-                                                   'req': req,
-                                                   })
+    f = ReportFilter(request.GET, queryset=Report.objects.all())
+    return render_to_response('pets/report_list.html', {'filter': f})
