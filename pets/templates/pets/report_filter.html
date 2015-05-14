@@ -1,0 +1,23 @@
+
+
+<body>
+{% block content %}
+    <form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    {% for object in filter %}
+        <div>
+	<div> <b>Ciudad:</b> {{ object.city }}</div>
+	<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
+	<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+</div>
+<div>
+	<div> <b>Nombre:</b> {{ object.name }}</div>
+	<div> <b>Raza:</b> {{ object.breed }}</div>
+	<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
+</div>
+<br />
+    {% endfor %}
+{% endblock %}
+</body>
