@@ -8,9 +8,9 @@
     </form>
     {% for object in filter %}
         <div>
-	<div> <b>Ciudad:</b> {{ object.city }}</div>
-	<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
-	<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+	<div> <b>Ciudad:</b> {{ object.city }}, 
+	<b>Zona:</b> {{ object.get_zone_display }}, 
+	<b>Barrio:</b> {{ object.n_hood }}</div>
 </div>
 <div>
 	<div> <b>Nombre:</b> {{ object.name }}</div>

@@ -5,17 +5,29 @@
         {{ filter.form.as_p }}
         <input type="submit" />
     </form>
+<div class="list">
     {% for object in filter %}
-        <div>
-	<div> <b>Ciudad:</b> {{ object.city }}</div>
-	<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
-	<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+<div class="card" style="width: 100%; float:left">
+	<div> <a href="/report/{{ object.id }}">{{ object }}</a> </div>
+
+	<div style="width: 40%; float:left">
+		{% for img in object.reportimage_set.all %}
+		<img style="max-width:90%; max-height:200px;" src="{{ img.image.url }}" alt="image"> </img>
+		{% endfor %}
+	</div>
+	<div style="width: 55%; float:left">
+		<div>
+			<div> <b>Ciudad:</b> {{ object.city }}</div>
+			<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
+			<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+		</div>
+		<div>
+			<div> <b>Nombre:</b> {{ object.name }}</div>
+			<div> <b>Raza:</b> {{ object.breed }}</div>
+			<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
+		</div>
+	</div>
 </div>
-<div>
-	<div> <b>Nombre:</b> {{ object.name }}</div>
-	<div> <b>Raza:</b> {{ object.breed }}</div>
-	<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
+{% endfor %}
 </div>
-<br />
-    {% endfor %}
 {% endblock %}
