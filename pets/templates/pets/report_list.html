@@ -11,7 +11,7 @@
 <div class="list">
     {% for object in filter %}
 <div class="card" style="width: 100%; float:left">
-	<div> <a href="/report/{{ object.id }}">{{ object }}</a> </div>
+	<div> <a href="/report/{{ object.id }}">{{ object }}</a> - {{ object.get_type_display }} </div>
 
 	<div style="width: 40%; float:left">
 		{% for img in object.reportimage_set.all %}
