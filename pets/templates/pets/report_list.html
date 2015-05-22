@@ -10,8 +10,13 @@
     </div>
 <div class="list">
     {% for object in filter %}
-<div class="card" style="width: 100%; float:left">
-	<div> <a href="/report/{{ object.id }}">{{ object }}</a> - {{ object.get_type_display }} </div>
+<div class="panel panel-default" style="width: 100%; float:left">
+	<div class="panel-heading">
+      <h3 class="panel-title">
+      	<a href="/report/{{ object.id }}">{{ object }}</a> - {{ object.get_type_display }}
+      </h3>
+    </div>
+	<div class="panel-body">
 
 	<div style="width: 40%; float:left">
 		{% for img in object.reportimage_set.all %}
@@ -29,6 +34,7 @@
 			<div> <b>Raza:</b> {{ object.breed }}</div>
 			<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
 		</div>
+	</div>
 	</div>
 </div>
 {% endfor %}
