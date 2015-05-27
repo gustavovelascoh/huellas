@@ -1,15 +1,6 @@
-<html>
-<head>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div>
-<!--h1>
-<a href = "/" > Buscando Huellas </a>
-</h1-->
-</div >
+{% extends "base.html" %}
+
+{% block content %}
 
 <div>Busqueda con filtro <a href="/list">aquí</a></div>
 <div style="width: 40%; float:left">
@@ -22,7 +13,7 @@
 {% for i in images %}
 
 {% if i.report_id.id == post.id %}
-<img src='{{ i.image.url }}' width="50%"/>
+<img src='{{ i.image.url }}' height="150px"/>
 
 {% endif %}
 
@@ -35,7 +26,7 @@
 
 
 <div style="width: 40%; float:left">
-<h3>Encontrados</h3>
+<h3>Encontrados o vistos</h3>
 {% for post in found %} 
 <div style="border-radius:25px; border: 2px solid #BBEEBB; padding: 20px;">
 
@@ -54,5 +45,4 @@
 </div>
 {% endfor %}
 </div>
-</body>
-<html>
+{% endblock %}
