@@ -2,11 +2,41 @@
 
 {% block content %}
 
-<div>Busqueda con filtro <a href="/list">aquí</a></div>
-<div style="width: 40%; float:left">
+<h2>Últimos reportes. </h2>
+<div>(<a href="/list">Ver todos</a>)</div>
+<div class="row">
+
+<div class="col-lg-5">
 <h3>Perdidos</h3>
-{% for post in lost %} 
-<div style="border-radius:25px; border: 2px solid #BBBBEE; padding: 20px;">
+{% for object in lost %}
+<div class="panel panel-info" style="width: 100%; float:left">
+	<div class="panel-heading">
+   		<h3 class="panel-title">
+   		<a href="/report/{{ object.id }}">{{ object }}</a> - {{ object.get_type_display }}
+   		</h3>
+   	</div>
+	<div class="panel-body">
+
+		<div style="width: 40%; float:left">
+			{% for img in object.reportimage_set.all %}
+			<img style="max-width:90%; max-height:200px;" src="{{ img.image.url }}" alt="image"> </img>
+			{% endfor %}
+		</div>
+		<div style="width: 55%; float:left">
+			<div>
+				<div> <b>Ciudad:</b> {{ object.city }}</div>
+				<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
+				<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+			</div>
+			<div>
+				<div> <b>Nombre:</b> {{ object.name }}</div>
+				<div> <b>Raza:</b> {{ object.breed }}</div>
+				<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
+			</div>
+		</div>
+	</div>
+</div> 
+<!--  div style="border-radius:25px; border: 2px solid #BBBBEE; padding: 20px;">
 
 <h5><a href="/report/{{ post.id }}">{{ post }}</a></h5>
 
@@ -20,29 +50,42 @@
 {% endfor %}
 <p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.get_genre_display }} </p >
 <p > Ciudad: {{ post.city }}, Zona: {{ post.zone}}, Barrio: {{ post.n_hood }} </p >
-</div>
+</div-->
 {% endfor %}
 </div>
 
 
-<div style="width: 40%; float:left">
+<div class="col-lg-5">
 <h3>Encontrados o vistos</h3>
-{% for post in found %} 
-<div style="border-radius:25px; border: 2px solid #BBEEBB; padding: 20px;">
+{% for object in found %} 
+<div class="panel panel-success" style="width: 100%; float:left">
+	<div class="panel-heading">
+   		<h3 class="panel-title">
+   		<a href="/report/{{ object.id }}">{{ object }}</a> - {{ object.get_type_display }}
+   		</h3>
+   	</div>
+	<div class="panel-body">
 
-<h5><a href="/report/{{ post.id }}">{{ post }}</a></h5>
-
-{% for i in images %}
-
-{% if i.report_id.id == post.id %}
-<img src='{{ MEDIA_URL }}{{ i.image }}' height="150px"/>
-
-{% endif %}
-
-{% endfor %}
-<p > Nombre: {{ post.name }}, Raza: {{ post.breed}}, Género: {{ post.genre }} </p >
-<p > Ciudad: {{ post.city }}, Zona: {{ post.get_zone_display}}, Barrio: {{ post.n_hood }} </p >
+		<div style="width: 40%; float:left">
+			{% for img in object.reportimage_set.all %}
+			<img style="max-width:90%; max-height:200px;" src="{{ img.image.url }}" alt="image"> </img>
+			{% endfor %}
+		</div>
+		<div style="width: 55%; float:left">
+			<div>
+				<div> <b>Ciudad:</b> {{ object.city }}</div>
+				<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
+				<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+			</div>
+			<div>
+				<div> <b>Nombre:</b> {{ object.name }}</div>
+				<div> <b>Raza:</b> {{ object.breed }}</div>
+				<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
+			</div>
+		</div>
+	</div>
 </div>
 {% endfor %}
+</div>
 </div>
 {% endblock %}

@@ -3,8 +3,11 @@
 <body>
 {% block content %}
     <form action="" method="get">
+    <table>
         {{ filter.form.as_p }}
+    </table>
         <input type="submit" />
+        
     </form>
     {% for object in filter %}
         <div class="panel panel-default">
