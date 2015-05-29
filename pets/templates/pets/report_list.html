@@ -1,42 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div><a href="/list">Limpiar filtro</a></div>
+<div><a href="/list" class="btn btn-default" >Limpiar filtro</a></div>
 <div>
     <form action="" method="get">
         {{ filter.form.as_p }}
         <input type="submit" />
     </form>
     </div>
-<div class="list">
-    {% for object in filter %}
-<div class="panel panel-default" style="width: 100%; float:left">
-	<div class="panel-heading">
-      <h3 class="panel-title">
-      	<a href="/report/{{ object.id }}">{{ object }}</a> - {{ object.get_type_display }}
-      </h3>
-    </div>
-	<div class="panel-body">
 
-	<div style="width: 40%; float:left">
-		{% for img in object.reportimage_set.all %}
-		<img style="max-width:90%; max-height:200px;" src="{{ img.image.url }}" alt="image"> </img>
-		{% endfor %}
-	</div>
-	<div style="width: 55%; float:left">
-		<div>
-			<div> <b>Ciudad:</b> {{ object.city }}</div>
-			<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
-			<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+    {% for object in filter %}
+{% if forloop.counter0|divisibleby:4 %} <div class="row"> {% endif %}  
+	<div class="col-md-3">      
+		<div class="panel panel-default" style="width: 100%; float:left">
+			<div class="panel-heading">
+	      		<h3 class="panel-title">
+	      		<a href="/report/{{ object.id }}">{{ object }}</a> - {{ object.get_type_display }}
+	      		</h3>
+	    	</div>
+			<div class="panel-body">
+	
+				<div style="width: 40%; float:left">
+					{% for img in object.reportimage_set.all %}
+					<img style="max-width:90%; max-height:200px;" src="{{ img.image.url }}" alt="image"> </img>
+					{% endfor %}
+				</div>
+				<div style="width: 55%; float:left">
+					<div>
+						<div> <b>Ciudad:</b> {{ object.city }}</div>
+						<div> <b>Zona:</b> {{ object.get_zone_display }}</div>
+						<div> <b>Barrio:</b> {{ object.n_hood }}</div>
+					</div>
+					<div>
+						<div> <b>Nombre:</b> {{ object.name }}</div>
+						<div> <b>Raza:</b> {{ object.breed }}</div>
+						<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div>
-			<div> <b>Nombre:</b> {{ object.name }}</div>
-			<div> <b>Raza:</b> {{ object.breed }}</div>
-			<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
-		</div>
 	</div>
-	</div>
-</div>
+{% if forloop.counter|divisibleby:4 or forloop.last %} </div> {% endif %}
 {% endfor %}
 </div>
 {% endblock %}
