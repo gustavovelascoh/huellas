@@ -14,3 +14,4 @@ django-storages-redux
 boto
 django-filter
 django-allauth
+django-restframework
