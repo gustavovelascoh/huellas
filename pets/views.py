@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import RequestContext
 
 
 from .models import Report
@@ -38,4 +39,10 @@ class ReportDetailView(DetailView):
 def report_list(request):
 
     f = ReportFilter(request.GET, queryset=Report.objects.all())
-    return render_to_response('pets/report_list.html', {'filter': f})
+    return render_to_response('pets/report_list.html', {'filter': f, 'user': request.user})
+
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
