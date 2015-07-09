@@ -13,6 +13,9 @@ from .filtersets import ReportFilter
 
 from django.shortcuts import render_to_response
 
+from rest_framework import viewsets
+from .serializers import ReportSerializer, ReportImageSerializer
+
 # Create your views here.
 
 def post_list(request):
@@ -46,3 +49,17 @@ def handler404(request):
                                   context_instance=RequestContext(request))
     response.status_code = 404
     return response
+
+class ReportViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
+
+class ReportImageViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = ReportImage.objects.all()
+    serializer_class = ReportImageSerializer

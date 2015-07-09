@@ -28,7 +28,7 @@ ON_HEROKU = os.environ.get('ON_HEROKU')
 if ON_HEROKU:
     DEBUG=False
 else:
-    DEBUG = False
+    DEBUG = True
     DATABASE_URL = 'postgres:///gustavo'
 
 ALLOWED_HOSTS = ['localhost', 'huellas.herokuapp.com']
@@ -53,6 +53,8 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.facebook',
+    #
+    'rest_framework',
     
 )
 
@@ -191,3 +193,10 @@ MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
 # you run `collectstatic`).
 DEFAULT_FILE_STORAGE = 'huellas.custom_storages.MediaStorage'
+
+# REST FRAMEWORK
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
