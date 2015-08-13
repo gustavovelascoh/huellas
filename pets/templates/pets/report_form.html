@@ -5,11 +5,20 @@
 <a href="/" class="btn btn-default"> Volver </a>
 <div>
 
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
+
+
+
+
+REPORT
+
+<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ report_form.as_p }}
+
+Añadir Imagen
+
+    {{ image_form.as_p }}
     <input type="submit" value="Create" />
 </form>
-
 
 </div>
 

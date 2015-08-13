@@ -4,7 +4,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic import CreateView
 from django.utils import timezone
 from django.shortcuts import render_to_response
-from django.forms.models import modelformset_factory
+from django.forms.models import modelformset_factory, inlineformset_factory
+from django.http import HttpResponseRedirect
 
 from .models import Report
 from .models import ReportImage
@@ -71,10 +72,15 @@ class ReportImageCreateView(CreateView):
     #fields = ['type', 'name', 'animal', 'breed', 'color',
     #'city', 'genre', 'zone', 'n_hood', 'email', 'phone', 'reportimage_set']
     ReportImageFormSet = modelformset_factory(ReportImage, fields=('image',))
+    #ReportImageFormSet = inlineformset_factory(Report, ReportImage, fields=('image',))
     
     form_class = ReportImageCreateForm
     
     formset = ReportImageFormSet(queryset=ReportImage.objects.none())
+    #r = Report.objects.get(id=1)
+    
+    formset = ReportImageFormSet()
+    #formset = ReportImageFormSet(instance=r)
     
     def render_to_response(self, context, **response_kwargs):
         context["formset"] = self.formset
@@ -100,14 +106,44 @@ class ReportCreateView(CreateView):
     
     form_class = ReportCreateForm
     
+    def render_to_response(self, context, **response_kwargs):
+        image_form = ReportImageCreateForm()
+        report_form = ReportCreateForm();
+        
+        context['image_form'] = image_form
+        context['report_form'] = report_form
+        #context["formset"] = self.formset
+        return CreateView.render_to_response(self, context, **response_kwargs)
+    
     def post(self, request, *args, **kwargs):
         
         print(request.POST)
+        print(request.FILES)
         
-        form = ReportImageCreateForm(request.POST)
+        form = ReportCreateForm(request.POST)
         
-        print(form)
+        print(form.errors)
+        print(form.cleaned_data)
+        if form.is_valid():
+            print("form is valid!!!!")
+            d = form.cleaned_data
+            r = Report(**d)
+            ''''r = Report(type=d['type'],
+                       animal=d['animal'])'''
+            r.save()
+            print(r.id)
+            print(r)
+            i = ReportImage(report_id=r,image=request.FILES['image'])
+            i.save()
+        #print(i)
+        #print(form)
+        
+        return HttpResponseRedirect('/')        
+        #return CreateView.post(self, request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        
+        print(args)
         
         return CreateView.post(self, request, *args, **kwargs)
-      
     

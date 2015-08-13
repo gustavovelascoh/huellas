@@ -9,8 +9,8 @@
 
 </div>
 
-<form method="post" action="">{% csrf_token %}
-    <table>{{ formset }}</table>
+<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+    <table>{{ form }}</table>
     
     <input type="submit"> </input>
 </form>
