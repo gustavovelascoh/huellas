@@ -2,24 +2,50 @@
 
 {% block content %}
 
+{% load widget_tweaks %}
+
 <a href="/" class="btn btn-default"> Volver </a>
 <div>
 
-
-
-
-
-REPORT
-
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+<br/>
+<!--
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+<legend>Crear Nuevo Reporte</legend>
+<fieldset>
     {{ report_form.as_p }}
 
 Añadir Imagen
 
     {{ image_form.as_p }}
     <input type="submit" value="Create" />
+</fieldset>
 </form>
 
+</div>
+
+*******PRUEBA--!>
+<div class="col-xs-6">
+	<div class="well bs-component">
+		<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+		<legend>Crear Nuevo Reporte</legend>
+		<fieldset>
+		{% for field in form %}
+			<div class="form-group">
+				{{ field.errors }}
+				{{ field.label_tag }}
+				{{ field|add_class:"control-form" }}
+			</div>
+		{% endfor %}
+			<div class="form-group">
+				{{ image_form.image.errors }}
+				{{ image_form.image.label_tag }}
+				{{ image_form.image|add_class:"control-form" }}
+			</div>
+		</fieldset>
+		<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</div>
 </div>
 
 {% endblock %}
