@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="/" class="btn btn-default"> Volver </a>
+<div>
+
+<br/>
+
+</div>
+
+<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+    <table>{{ form }}</table>
+    
+    <input type="submit"> </input>
+</form>
+{% endblock %}
