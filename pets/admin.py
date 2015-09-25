@@ -19,5 +19,7 @@ class ReportAdmin(admin.ModelAdmin):
                  ]
     inlines = [ReportImageInline]
     
+    
+    
 admin.site.register(Report, ReportAdmin)
 admin.site.register(ReportImage)

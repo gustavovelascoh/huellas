@@ -22,11 +22,12 @@
 <div>
 	<div> <b>Nombre:</b> {{ object.name }}</div>
 	<div> <b>Raza:</b> {{ object.breed }}</div>
+	<div> <b>Color:</b> {{ object.color }}</div>
 	<div> <b>Genero:</b> {{ object.get_genre_display }}</div>
 </div>
 <div>
 <div><b>Reportado por: </b>{{ object.reporter }}</div>
-<div><b>Comentarios: </b>{{ object.comment }}<div>
+<div><b>Comentarios: </b>{{ object.comment }}</div>
 <div><b>Publicado: </b>{{ object.pub_date|date }}</div>
 </div>
 </div>
