@@ -6,6 +6,7 @@ Created on May 14, 2015
 
 import django_filters
 from .models import Report
+from django_filters.filterset import ORDER_BY_FIELD
 
 
 class ReportFilter(django_filters.FilterSet):
@@ -27,9 +28,13 @@ class ReportFilter(django_filters.FilterSet):
     genre = django_filters.ChoiceFilter(choices=Report.GENRE_CHOICES)
     genre.label='Género'
     
+    
+    
     class Meta:
         model = Report
         fields = ['name', 'city', 'zone', 'breed', 'genre', 'color']
+        order_by = ['-pub_date']
+        order_by_field = "-pub_date"
         
         
     def __init__(self, *args, **kwargs):
