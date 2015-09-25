@@ -55,6 +55,8 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     #
     'rest_framework',
+    # templates and forms
+    'widget_tweaks',
     
 )
 

@@ -15,3 +15,4 @@ boto
 django-filter
 django-allauth
 django-restframework
+django-widget-tweaks
