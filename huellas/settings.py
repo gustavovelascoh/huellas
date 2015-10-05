@@ -22,11 +22,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j5ckc+v=@(l5$!y@$9stjb@p78)$*9416dn562dj@0ih(wumdc'
 
 ON_HEROKU = os.environ.get('ON_HEROKU')
+H_DEBUG = os.environ.get('H_DEBUG')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if ON_HEROKU:
-    DEBUG=False
+    if H_DEBUG:
+        DEBUG=True
+    else:
+        DEBUG=False
 else:
     DEBUG = True
     DATABASE_URL = 'postgres:///gustavo'
