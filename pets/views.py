@@ -130,12 +130,14 @@ class ReportCreateView(CreateView):
             r = Report(**d)
             ''''r = Report(type=d['type'],
                        animal=d['animal'])'''
+            if (request.user):
+                print("USER: %s" % request.user)            
             
             if (request.user.id):
-                print("User",request.user.id )
+                print("User id: %s" % request.user.id )
             
                 r.reporter_id = request.user
-                r.reporter_name = request.user.name 
+                r.reporter_name = request.user.username 
             
             r.save()
             print(r.id)
