@@ -27,7 +27,7 @@ H_DEBUG = os.environ.get('H_DEBUG')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if ON_HEROKU:
-    SITE_ID=2
+    SITE_ID=1
     if H_DEBUG:
         DEBUG=True
     else:
