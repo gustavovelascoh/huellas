@@ -27,11 +27,13 @@ H_DEBUG = os.environ.get('H_DEBUG')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if ON_HEROKU:
+    SITE_ID=2
     if H_DEBUG:
         DEBUG=True
     else:
         DEBUG=False
 else:
+    SITE_ID=1
     DEBUG = True
     DATABASE_URL = 'postgres:///gustavo'
 
@@ -64,7 +66,7 @@ INSTALLED_APPS = (
     
 )
 
-SITE_ID = 1
+#SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
