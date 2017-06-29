@@ -6,7 +6,7 @@ Created on May 14, 2015
 
 import django_filters
 from .models import Report
-from django_filters.filterset import ORDER_BY_FIELD
+#from django_filters.filterset import ORDER_BY_FIELD
 
 
 class ReportFilter(django_filters.FilterSet):
